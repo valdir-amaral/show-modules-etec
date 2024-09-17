@@ -12,14 +12,13 @@
 // @exclude      https://eadtec.cps.sp.gov.br/mostraaula.php
 // @exclude      https://eadtec.cps.sp.gov.br/midiateca/arquivos/*
 // @exclude      https://eadtec.cps.sp.gov.br/popup_aviso_mostra.php*
+// @run-at       document-start
 // @grant        none
 
 // ==/UserScript==
 
 (function() {
     'use strict';
-
-    document.querySelector('*').style.scrollBehavior = 'smooth';
 
     // Estilos para os elementos
     const moduleStyles = {
@@ -32,7 +31,7 @@
     const containerStyles = {
         display: 'grid',
         maxWidth: '1200px',
-        margin: '120px auto',
+        margin: '16px auto',
         gridTemplateColumns: 'repeat(3, 1fr)',
         gap: '14px'
     }
@@ -43,14 +42,6 @@
         fontSize: '16px',
         textAlign: 'left',
         display: 'block'
-    }
-    const scrollBtnStyles = {
-        backgroundColor: '#B31826',
-        textAlign: 'center',
-        color: 'white',
-        fontSize: '18px',
-        borderRadius: '12px',
-        padding: '8px 12px',
     }
     const titleModStyles = {
         marginBottom: '10px',
@@ -95,6 +86,15 @@
     // Função principal para adicionar os módulos na página
     function addModules() {
         const modulesData = {
+            'Módulo 1 SIMULADO': [
+            {text: 'Prova-Simulado: Orientações Exame', url: 'https://eadtec.cps.sp.gov.br/cenario.php?id_aula=1442'}
+            ],
+            'Módulo 2 SIMULADO': [
+            {text: 'Prova-Simulado: Orientações Exame', url: 'https://eadtec.cps.sp.gov.br/cenario.php?id_aula=1443'}
+            ],
+            'Módulo 3 SIMULADO': [
+            {text: 'Prova-Simulado: Orientações Exame', url: 'https://eadtec.cps.sp.gov.br/cenario.php?id_aula=1444'}
+            ],
             'Modulo 1 DS': [
                 { text: '1 Raciocinando a Lógica', url: 'https://eadtec.cps.sp.gov.br/cenario.php?id_aula=796' },
                 { text: '2 Desenvolvendo a Lógica', url: 'https://eadtec.cps.sp.gov.br/cenario.php?id_aula=797' },
@@ -262,14 +262,8 @@
 
     // Criar botão para scrollar até os módulos
     const mainTable = document.querySelector('table');
-    const scrollBtn = createLink('Ver módulos', '#module-container');
-    Object.assign(scrollBtn.style, scrollBtnStyles);
-    console.log(scrollBtn)
-    mainTable.insertBefore(scrollBtn, mainTable.firstChild);
 
     // Adicionar os módulos quando a página estiver carregada
     window.addEventListener('load', addModules);
-    
+
 })();
-
-
